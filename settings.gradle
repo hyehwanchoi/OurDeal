@@ -1,0 +1,3 @@
+rootProject.name = 'OurDeal'
+include 'login-service'
+include 'common'
