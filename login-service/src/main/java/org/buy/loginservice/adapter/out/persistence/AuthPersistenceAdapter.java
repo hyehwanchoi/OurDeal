@@ -3,7 +3,9 @@ package org.buy.loginservice.adapter.out.persistence;
 import lombok.RequiredArgsConstructor;
 import org.buy.common.PersistenceAdapter;
 import org.buy.loginservice.application.port.out.FindUserPort;
-import org.buy.loginservice.domain.Users;
+import org.buy.loginservice.domain.User;
+
+import java.util.Optional;
 
 @PersistenceAdapter
 @RequiredArgsConstructor
@@ -12,8 +14,8 @@ public class AuthPersistenceAdapter implements FindUserPort {
     private final UserRepository userRepository;
 
     @Override
-    public UserEntity findByUsername(Users.UsersUserName usersUserName) {
+    public Optional<UserEntity> findByUsername(User.UserUsername userUserName) {
 
-        return userRepository.findByUsername(usersUserName.get);
+        return userRepository.findByUsername(userUserName);
     }
 }
