@@ -1,0 +1,10 @@
+app:
+  jwtSecret: "SecretKeyToGenJWTs"
+  jwtExpirationInMs: 3600000  # 1시간 (밀리초)
+
+logging:
+  level:
+    # Hibernate가 실행하는 SQL 쿼리를 디버그 레벨로 출력
+    org.hibernate.SQL: DEBUG
+    # 쿼리 바인딩 변수의 값을 추적 (TRACE 레벨로 출력)
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE

@@ -2,12 +2,25 @@ spring:
   application:
     name: login-service
 
-# H2 DB ??
-  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+  config:
+    import: classpath:/info/info.yaml
 
-  jpa.database-platform: org.hibernate.dialect.H2Dialect
-  h2.console.enabled: true
+  # H2 DB ??
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""  # 기본적으로 비밀번호 없음
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console  # 브라우저에서 접속할 콘솔 URL
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update  # 프로젝트에 맞게 'create', 'validate' 등 변경 가능
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true

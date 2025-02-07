@@ -3,23 +3,31 @@ package org.buy.loginservice.domain;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Value;
 
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
 
-    private Long id;
+    private String userId;
     private String username;
     private String password;
 
     public static User generateUser(UserId userId, UserPassword userPassword, UserUsername userUserName) {
 
-        return new User(userId.userId, userPassword.userPassword, userUserName.username);
+        return new User(userId.userId, userPassword.password, userUserName.username);
     }
 
-    public record UserId(Long userId) {
+    @Value
+    public static class UserId {
+        String userId;
+
+        public UserId(String value) {
+            this.userId = value;
+        }
     }
 
+    @Value
     public static class UserPassword {
         String password;
 
@@ -28,6 +36,7 @@ public class User {
         }
     }
 
+    @Value
     public static class UserUsername {
         String username;
 

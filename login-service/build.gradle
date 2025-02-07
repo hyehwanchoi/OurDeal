@@ -22,6 +22,10 @@ dependencies {
     implementation project(path: ':common')
 }
 
+test {
+    useJUnitPlatform()
+}
+
 docker {
     println(tasks.bootJar.outputs.files)
     name rootProject.name + '-' + project.name + ":" + version

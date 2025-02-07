@@ -2,25 +2,24 @@ package org.buy.loginservice.application.service;
 
 import lombok.RequiredArgsConstructor;
 import org.buy.common.UseCase;
-import org.buy.loginservice.adapter.out.persistence.UserRepository;
+import org.buy.loginservice.adapter.out.persistence.UserEntity;
+import org.buy.loginservice.adapter.out.persistence.UserMapper;
+import org.buy.loginservice.application.port.in.FindUserCommand;
 import org.buy.loginservice.application.port.in.LoginUseCase;
+import org.buy.loginservice.application.port.out.FindUserPort;
 import org.buy.loginservice.domain.User;
-
-import java.util.Optional;
 
 @UseCase
 @RequiredArgsConstructor
 public class LoginService implements LoginUseCase {
 
-    private final UserRepository userRepository;
+    private final FindUserPort findUserPort;
+    private final UserMapper userMapper;
 
     @Override
-    public Optional<User> login(String username, String password) {
-        Optional<User> user = userRepository.findByUsername(new User.UserUsername(username));
+    public User login(FindUserCommand findUserCommand) {
+        UserEntity userEntity = findUserPort.findByUsername(new User.UserUsername(findUserCommand.getUsername()));
 
-        if (user.isPresent() && user.get().getPassword().equals(password)) {
-            return user;
-        }
-        return Optional.empty();
+        return userMapper.mapToDomainEntity(userEntity);
     }
 }
