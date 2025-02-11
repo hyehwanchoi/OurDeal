@@ -11,4 +11,5 @@ import org.buy.common.SelfValidating;
 public class FindUserCommand extends SelfValidating<FindUserCommand> {
 
     private final String username;
+    private final String password;
 }
