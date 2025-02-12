@@ -37,6 +37,7 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/h2-console/**").permitAll()
                         .antMatchers("/api/auth/**").permitAll()
+                        .antMatchers("/api/banking/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

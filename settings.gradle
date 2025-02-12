@@ -1,3 +1,4 @@
 rootProject.name = 'OurDeal'
 include 'login-service'
+include 'banking-service'
 include 'common'
