@@ -3,7 +3,6 @@ package org.buy.loginservice.adapter.out.persistence;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -23,6 +22,4 @@ public class UserEntity {
 
     @Column(nullable = false)
     private String password;
-
-
 }
