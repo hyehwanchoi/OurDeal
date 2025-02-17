@@ -1,10 +1,8 @@
 package org.buy.loginservice.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Value;
+import lombok.*;
 
+@ToString
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
@@ -13,9 +11,9 @@ public class User {
     private String username;
     private String password;
 
-    public static User generateUser(UserId userId, UserPassword userPassword, UserUsername userUserName) {
+    public static User generateUser(UserId userId, UserUsername userUserName, UserPassword userPassword) {
 
-        return new User(userId.userId, userPassword.password, userUserName.username);
+        return new User(userId.userId, userUserName.username, userPassword.password);
     }
 
     @Value

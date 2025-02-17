@@ -24,11 +24,6 @@ public class AccountEntity {
     @Column(nullable = false)
     private BigDecimal balance;
 
-    public AccountEntity(String accountNumber, BigDecimal balance) {
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-    }
-
     public void withdraw(BigDecimal amount) {
         if (balance.compareTo(amount) < 0) {
             throw new IllegalArgumentException("Insufficient balance");

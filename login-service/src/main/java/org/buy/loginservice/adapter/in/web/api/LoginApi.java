@@ -27,4 +27,10 @@ public class LoginApi {
 
         return ResponseEntity.ok(new JwtResponse(user));
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+
+        return ResponseEntity.ok("success");
+    }
 }

@@ -1,6 +1,7 @@
 package org.buy.loginservice.application.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.buy.common.UseCase;
 import org.buy.loginservice.adapter.out.persistence.UserEntity;
 import org.buy.loginservice.adapter.out.persistence.UserMapper;
@@ -11,6 +12,7 @@ import org.buy.loginservice.application.port.out.FindUserPort;
 import org.buy.loginservice.domain.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Slf4j
 @UseCase
 @RequiredArgsConstructor
 public class LoginService implements LoginUseCase {
@@ -35,7 +37,8 @@ public class LoginService implements LoginUseCase {
         }
 
         User user = userMapper.mapToDomainEntity(userEntity);
-        
+        log.info("user {}", user.toString());
+
         return jwtTokenProvider.generateToken(user);
     }
 }
