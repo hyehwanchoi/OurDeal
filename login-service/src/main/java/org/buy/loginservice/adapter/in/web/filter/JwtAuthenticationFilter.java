@@ -52,6 +52,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 log.error("Token validation error: {}", ex.getMessage());
                 SecurityContextHolder.clearContext();
             }
+        } else {
+            log.error("header is null");
         }
         filterChain.doFilter(request, response);
     }
