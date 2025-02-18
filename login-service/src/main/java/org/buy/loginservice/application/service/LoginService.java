@@ -24,7 +24,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 public class LoginService implements LoginUseCase {
 
-    private final static String GOOGLE_CLIENT_ID = "323598897849-a6vs10ng66eijhjhq5lt1hv4npdgpfb7.apps.googleusercontent.com";
+    private final static String GOOGLE_CLIENT_ID = "1";
 
     private final FindUserPort findUserPort;
     private final UserMapper userMapper;
