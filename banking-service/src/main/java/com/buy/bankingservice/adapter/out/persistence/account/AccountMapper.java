@@ -1,14 +1,14 @@
 package com.buy.bankingservice.adapter.out.persistence.account;
 
-import com.buy.bankingservice.domain.Account;
+import com.buy.bankingservice.domain.BankAccount;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountMapper {
 
-    public Account mapToDomainEntity(AccountEntity entity) {
+    public BankAccount mapToDomainEntity(AccountEntity entity) {
 
-        return Account.generateAccount(new Account.AccountId(entity.getId() + ""),
-                new Account.AccountNumber(entity.getAccountNumber()), new Account.Balance(entity.getBalance()));
+        return BankAccount.generateAccount(new BankAccount.AccountId(entity.getId() + ""),
+                new BankAccount.AccountNumber(entity.getAccountNumber()), new BankAccount.Balance(entity.getBalance()));
     }
 }

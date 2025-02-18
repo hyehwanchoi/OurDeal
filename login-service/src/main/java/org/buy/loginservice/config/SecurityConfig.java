@@ -39,7 +39,8 @@ public class SecurityConfig {
                 .authorizeRequests(authorize -> authorize
                         .antMatchers("/api/auth/login").permitAll()
                         .antMatchers("/api/auth/**").authenticated()
-                        .antMatchers("/api/banking/**").permitAll()
+                        .antMatchers("/api/banking/**").authenticated()
+                        .antMatchers("/api/accounts/**").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

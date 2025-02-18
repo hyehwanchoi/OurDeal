@@ -1,6 +1,7 @@
 package org.buy.loginservice.adapter.in.web.api;
 
 import lombok.RequiredArgsConstructor;
+import org.buy.common.WebAdapter;
 import org.buy.loginservice.adapter.in.web.dto.JwtResponse;
 import org.buy.loginservice.adapter.in.web.dto.LoginRequest;
 import org.buy.loginservice.application.port.in.FindUserCommand;
@@ -8,6 +9,7 @@ import org.buy.loginservice.application.port.in.LoginUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@WebAdapter
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")
@@ -26,11 +28,5 @@ public class LoginApi {
         String user = loginUseCase.login(findUserCommand);
 
         return ResponseEntity.ok(new JwtResponse(user));
-    }
-
-    @GetMapping("/test")
-    public ResponseEntity<String> test() {
-
-        return ResponseEntity.ok("success");
     }
 }

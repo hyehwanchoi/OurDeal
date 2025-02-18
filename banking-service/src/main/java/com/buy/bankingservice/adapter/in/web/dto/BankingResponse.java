@@ -13,4 +13,5 @@ public class BankingResponse {
     private final String to;
     private final BigDecimal amount;
     private final String message;
+
 }

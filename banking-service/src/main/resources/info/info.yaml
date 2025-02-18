@@ -1,2 +1,6 @@
 server:
   port: 8081
+
+app:
+  jwtSecret: "your-very-long-secret-key-that-is-at-least-64-characters-long-for-hs512"
+  jwtExpirationInMs: 3600000
